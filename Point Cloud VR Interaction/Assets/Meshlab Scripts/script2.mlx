@@ -1,0 +1,15 @@
+<!DOCTYPE FilterScript>
+<FilterScript>
+ <filter name="Compute normals for point sets">
+  <Param type="RichInt" name="K" value="10" description="Neighbour num" tooltip="The number of neighbors used to estimate normals." isxmlparam="0"/>
+  <Param type="RichInt" name="smoothIter" value="0" description="Smooth Iteration" tooltip="The number of smoothing iteration done on the p used to estimate and propagate normals." isxmlparam="0"/>
+  <Param type="RichBool" name="flipFlag" value="false" description="Flip normals w.r.t. viewpoint" tooltip="If the 'viewpoint' (i.e. scanner position) is known, it can be used to disambiguate normals orientation, so that all the normals will be oriented in the same direction." isxmlparam="0"/>
+  <Param type="RichPoint3f" y="0" name="viewPos" description="Viewpoint Pos." z="0" x="0" tooltip="The viewpoint position can be set by hand (i.e. getting the current viewpoint) or it can be retrieved from mesh camera, if the viewpoint position is stored there." isxmlparam="0"/>
+ </filter>
+ <filter name="Surface Reconstruction: Ball Pivoting">
+  <Param type="RichAbsPerc" name="BallRadius" max="5.37588" value="0" description="Pivoting Ball radius (0 autoguess)" tooltip="The radius of the ball pivoting (rolling) over the set of points. Gaps that are larger than the ball radius will not be filled; similarly the small pits that are smaller than the ball radius will be filled." isxmlparam="0" min="0"/>
+  <Param type="RichFloat" name="Clustering" value="20" description="Clustering radius (% of ball radius)" tooltip="To avoid the creation of too small triangles, if a vertex is found too close to a previous one, it is clustered/merged with it." isxmlparam="0"/>
+  <Param type="RichFloat" name="CreaseThr" value="90" description="Angle Threshold (degrees)" tooltip="If we encounter a crease angle that is too large we should stop the ball rolling" isxmlparam="0"/>
+  <Param type="RichBool" name="DeleteFaces" value="false" description="Delete initial set of faces" tooltip="if true all the initial faces of the mesh are deleted and the whole surface is rebuilt from scratch. Otherwise the current faces are used as a starting point. Useful if you run the algorithm multiple times with an increasing ball radius." isxmlparam="0"/>
+ </filter>
+</FilterScript>
